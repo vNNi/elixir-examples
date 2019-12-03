@@ -3,6 +3,6 @@ defmodule AppTest do
   doctest App
 
   test "greets the world" do
-    assert App.hello() == :world
+    assert App.hello() == :worldasd
   end
 end
