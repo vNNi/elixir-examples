@@ -9,4 +9,12 @@ defmodule App.Weather.Test do
 
     assert = "#{@api}Rio%20de%20Janeiro&appid=#{appid}" == endpoint
   end
+
+  test "should return celsius when take Kelvin" do
+    kelvin_example = 296.48
+    celsius_example = 23.3
+    temperature = App.Weather.kelvin_to_celsius(kelvin_example)
+
+    assert celsius_example == temperature
+  end
 end
