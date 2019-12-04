@@ -7,7 +7,7 @@ defmodule App.Weather.Test do
     appid = App.Weather.get_appid()
     endpoint = App.Weather.get_endpoint("Rio de Janeiro")
 
-    assert = "#{@api}Rio%20de%20Janeiro&appid=#{appid}" == endpoint
+    assert "#{@api}Rio%20de%20Janeiro&appid=#{appid}" == endpoint
   end
 
   test "should return celsius when take Kelvin" do
@@ -16,5 +16,15 @@ defmodule App.Weather.Test do
     temperature = App.Weather.kelvin_to_celsius(kelvin_example)
 
     assert celsius_example == temperature
+  end
+
+  test "should return temperature when take valid location" do
+    temperature = App.Weather.temperature_of("Rio de Janeiro")
+    assert String.contains?(temperature, "Rio de Janeiro") == true
+  end
+
+  test "should return not found when take invalid location" do
+    result = App.Weather.temperature_of("00000")
+    assert result == "00000 not found"
   end
 end
